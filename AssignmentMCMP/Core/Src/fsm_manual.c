@@ -30,12 +30,12 @@ void fsm_manual_run(){
 					setVerticalLeds(RESET,RESET,RESET);
 				}
 				toggle = 1 - toggle;
-				setTimer(1000, 3);
+				setTimer(100, 3);
 			}
 			if(isButtonPressed(1) == 1){
 				setHorizontalLeds(RESET,RESET,RESET);
 				setVerticalLeds(RESET,RESET,RESET);
-				setTimer(1000, 3);
+				setTimer(100, 3);
 				status = MAN_YELLOW;
 				printf("Current time: %d\r\n", yellow_duration_clone);
 			}
@@ -60,12 +60,12 @@ void fsm_manual_run(){
 					setVerticalLeds(RESET,RESET,RESET);
 				}
 				toggle = 1 - toggle;
-				setTimer(1000, 3);
+				setTimer(100, 3);
 			}
 			if(isButtonPressed(1) == 1){
 				setHorizontalLeds(RESET,RESET,RESET);
 				setVerticalLeds(RESET,RESET,RESET);
-				setTimer(1000, 3);
+				setTimer(100, 3);
 				status = MAN_GREEN;
 				printf("Current time: %d\r\n", green_duration_clone);
 			}
@@ -90,7 +90,7 @@ void fsm_manual_run(){
 					setVerticalLeds(RESET,RESET,RESET);
 				}
 				toggle = 1 - toggle;
-				setTimer(1000, 3);
+				setTimer(100, 3);
 			}
 			if(isButtonPressed(1) == 1){
 				setHorizontalLeds(RESET,RESET,RESET);
