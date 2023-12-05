@@ -8,6 +8,8 @@
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_
 
+#include <stdio.h>
+#include <stdint.h>
 #include "software_timer.h"
 #include "button.h"
 #include "main.h"
@@ -37,5 +39,8 @@ void setPedesLeds(int red, int green, int mixed);
 extern int red_duration;
 extern int green_duration;
 extern int yellow_duration;
+
+extern UART_HandleTypeDef huart2;
+extern TIM_HandleTypeDef htim3;
 
 #endif /* INC_GLOBAL_H_ */
