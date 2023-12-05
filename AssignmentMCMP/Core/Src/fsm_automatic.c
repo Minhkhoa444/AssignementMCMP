@@ -12,7 +12,7 @@ int red_duration = 5;
 int green_duration = 3;
 int yellow_duration = 2;
 int index_led = 0;
-
+int pedeson=0;
 
 void fsm_automatic_run(){
 	switch(status) {
@@ -22,9 +22,15 @@ void fsm_automatic_run(){
 			setTimer(1000, 1);
 			break;
 		case RED_GREEN:
-			setHorizontalLeds(SET,RESET,RESET);
+			setHorizontalLeds(SET,RESET,RESET);	//D4-5 horizontal
 			setVerticalLeds(RESET,SET, RESET);
-
+//			if(timer_flag[9]==1){
+//				pedeson=0;
+//				setPedesLeds(RESET, RESET, RESET);
+//			}
+			if(pedeson==1){
+				setPedesLeds(RESET, SET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(yellow_duration*1000, 0);
@@ -43,11 +49,21 @@ void fsm_automatic_run(){
 			}
 			if(isButtonPressed(0) == 1){
 				setPedesLeds(RESET,SET,RESET);
+				pedeson=1;
+//				int pedesduration = (red_duration+green_duration+yellow_duration)*1000;
+//				setTimer(pedesduration,9);
 			}
 			break;
 		case RED_YELLOW:
 			setHorizontalLeds(SET,RESET,RESET);
 			setVerticalLeds(RESET,RESET, SET);
+//			if(timer_flag[9]==1){
+//				pedeson=0;
+//				setPedesLeds(RESET, RESET, RESET);
+//			}
+			if(pedeson==1){
+				setPedesLeds(RESET, SET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(green_duration*1000, 0);
@@ -59,11 +75,21 @@ void fsm_automatic_run(){
 			}
 			if(isButtonPressed(0) == 1){
 				setPedesLeds(RESET,SET,RESET);
+				pedeson=1;
+//				int pedesduration = (red_duration+green_duration+yellow_duration)*1000;
+//				setTimer(pedesduration,9);
 			}
 			break;
 		case GREEN_RED:
 			setHorizontalLeds(RESET,SET,RESET);
 			setVerticalLeds(SET,RESET,RESET);
+//			if(timer_flag[9]==1){
+//				pedeson=0;
+//				setPedesLeds(RESET, RESET, RESET);
+//			}
+			if(pedeson==1){
+				setPedesLeds(SET, RESET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(yellow_duration*1000, 0);
@@ -75,11 +101,21 @@ void fsm_automatic_run(){
 			}
 			if(isButtonPressed(0) == 1){
 				setPedesLeds(SET,RESET,RESET);
+				pedeson=1;
+//				int pedesduration = (red_duration+green_duration+yellow_duration)*1000;
+//				setTimer(pedesduration,9);
 			}
 			break;
 		case YELLOW_RED:
 			setHorizontalLeds(RESET,RESET,SET);
 			setVerticalLeds(SET,RESET,RESET);
+//			if(timer_flag[9]==1){
+//				pedeson=0;
+//				setPedesLeds(RESET, RESET, RESET);
+//			}
+			if(pedeson==1){
+				setPedesLeds(SET, RESET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(green_duration*1000, 0);
@@ -91,11 +127,12 @@ void fsm_automatic_run(){
 			}
 			if(isButtonPressed(0) == 1){
 				setPedesLeds(SET,RESET,RESET);
+				pedeson=1;
+//				int pedesduration = (red_duration+green_duration+yellow_duration)*1000;
+//				setTimer(pedesduration,9);
 			}
 			break;
 		default:
 			break;
 	}
-
-
 };

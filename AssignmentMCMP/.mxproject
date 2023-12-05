@@ -9,18 +9,18 @@ CDefines=USE_HAL_DRIVER;STM32F103xB;USE_HAL_DRIVER;USE_HAL_DRIVER;
 [PreviousGenFiles]
 AdvancedFolderStructure=true
 HeaderFileListSize=3
-HeaderFiles#0=D:/AssignmentMCMP/Core/Inc/stm32f1xx_it.h
-HeaderFiles#1=D:/AssignmentMCMP/Core/Inc/stm32f1xx_hal_conf.h
-HeaderFiles#2=D:/AssignmentMCMP/Core/Inc/main.h
+HeaderFiles#0=D:/VXLProject/AssignmentMCMP/Core/Inc/stm32f1xx_it.h
+HeaderFiles#1=D:/VXLProject/AssignmentMCMP/Core/Inc/stm32f1xx_hal_conf.h
+HeaderFiles#2=D:/VXLProject/AssignmentMCMP/Core/Inc/main.h
 HeaderFolderListSize=1
-HeaderPath#0=D:/AssignmentMCMP/Core/Inc
+HeaderPath#0=D:/VXLProject/AssignmentMCMP/Core/Inc
 HeaderFiles=;
 SourceFileListSize=4
-SourceFiles#0=D:/AssignmentMCMP/Core/Src/stm32f1xx_it.c
-SourceFiles#1=D:/AssignmentMCMP/Core/Src/stm32f1xx_hal_msp.c
-SourceFiles#2=D:/AssignmentMCMP/Core/Src/stm32f1xx_hal_timebase_tim.c
-SourceFiles#3=D:/AssignmentMCMP/Core/Src/main.c
+SourceFiles#0=D:/VXLProject/AssignmentMCMP/Core/Src/stm32f1xx_it.c
+SourceFiles#1=D:/VXLProject/AssignmentMCMP/Core/Src/stm32f1xx_hal_msp.c
+SourceFiles#2=D:/VXLProject/AssignmentMCMP/Core/Src/stm32f1xx_hal_timebase_tim.c
+SourceFiles#3=D:/VXLProject/AssignmentMCMP/Core/Src/main.c
 SourceFolderListSize=1
-SourcePath#0=D:/AssignmentMCMP/Core/Src
+SourcePath#0=D:/VXLProject/AssignmentMCMP/Core/Src
 SourceFiles=;
 
