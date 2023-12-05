@@ -37,10 +37,12 @@ void fsm_manual_run(){
 				setVerticalLeds(RESET,RESET,RESET);
 				setTimer(1000, 3);
 				status = MAN_YELLOW;
+				printf("Current time: %d\r\n", yellow_duration_clone);
 			}
 			if(isButtonPressed(2) == 1){
 				red_duration_clone++;
 				if(red_duration_clone >= 99) red_duration_clone = red_duration;
+				printf("Current time: %d\r\n", red_duration_clone);
 			}
 			if(isButtonPressed(3) == 1){
 				red_duration =  red_duration_clone;
@@ -65,10 +67,12 @@ void fsm_manual_run(){
 				setVerticalLeds(RESET,RESET,RESET);
 				setTimer(1000, 3);
 				status = MAN_GREEN;
+				printf("Current time: %d\r\n", green_duration_clone);
 			}
 			if(isButtonPressed(2) == 1){
 				yellow_duration_clone++;
 				if(yellow_duration_clone >= 99) yellow_duration_clone = yellow_duration;
+				printf("Current time: %d\r\n", yellow_duration_clone);
 			}
 			if(isButtonPressed(3) == 1){
 				yellow_duration =  yellow_duration_clone;
@@ -96,6 +100,7 @@ void fsm_manual_run(){
 			if(isButtonPressed(2) == 1){
 				green_duration_clone++;
 				if(green_duration_clone >= 99) green_duration_clone = green_duration;
+				printf("Current time: %d\r\n", green_duration_clone);
 			}
 			if(isButtonPressed(3) == 1){
 				green_duration =  green_duration_clone;
