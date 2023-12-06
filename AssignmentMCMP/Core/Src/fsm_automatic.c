@@ -18,6 +18,8 @@ void fsm_automatic_run(){
 	switch(status) {
 		case INIT:
 			status = RED_GREEN;
+			int pedesduration = (red_duration + green_duration + yellow_duration)*100;
+			setTimer(pedesduration,9);
 			setInitialValue(red_duration, green_duration);
 			setTimer(green_duration*100, 0);
 			setTimer(100, 1);
@@ -29,9 +31,9 @@ void fsm_automatic_run(){
 //				pedeson=0;
 //				setPedesLeds(RESET, RESET, RESET);
 //			}
-//			if(pedeson==1){
-//				setPedesLeds(RESET, SET, RESET);
-//			}
+			if(pedeson==1){
+				setPedesLeds(RESET, SET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(yellow_duration*100, 0);
@@ -65,16 +67,14 @@ void fsm_automatic_run(){
 //				pedeson=0;
 //				setPedesLeds(RESET, RESET, RESET);
 //			}
-//			if(pedeson==1){
-//				setPedesLeds(RESET, SET, RESET);
-//			}
+			if(pedeson==1){
+				setPedesLeds(RESET, SET, RESET);
+			}
 			if(timer_flag[0] == 1){
 				setPedesLeds(RESET,RESET,RESET);
 				setTimer(green_duration*100, 0);
 				status = GREEN_RED;
 				setInitialValue(green_duration, red_duration);
-//				setHorizontalLeds(RESET,RESET,RESET); //D4-5 horizontal
-//				setVerticalLeds(RESET,RESET, RESET);
 			}
 			if(timer_flag[1] == 1){
 				countDown();
