@@ -22,10 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "software_timer.h"
-#include "button.h"
-#include "fsm_automatic.h"
-#include "fsm_manual.h"
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,7 +61,40 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void wrapper(void) {
+  timerRun(0); // led duration
+  timerRun(1); //  7-segment counter 1s
+  timerRun(3); // blinking led
+  timerRun(8);
+  timerRun(9);
+  getKeyInput(0);
+  getKeyInput(1);
+  getKeyInput(2);
+  getKeyInput(3);
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+//////
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  if (htim->Instance == TIM2) {
+    SCH_Update();
+//    timerRun(0); // led duration
+//    timerRun(1); //  7-segment counter 1s
+//    timerRun(3); // blinking led
+//    timerRun(9); // blinking led
+//    getKeyInput(0);
+//    getKeyInput(1);
+//    getKeyInput(2);
+//    getKeyInput(3);
+  }
+  /* USER CODE BEGIN Callback 1 */
+//////
+  /* USER CODE END Callback 1 */
+}
 /* USER CODE END 0 */
 
 /**
@@ -100,18 +130,22 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  SCH_Add_Task(wrapper, 0, 1);
+  SCH_Add_Task(fsm_automatic_run, 0, 1);
+  SCH_Add_Task(fsm_manual_run, 0, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  status = INIT;
+  status = INIT ;
   while (1)
   {
-	  fsm_automatic_run();
-	  fsm_manual_run();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+//    fsm_automatic_run();
+//    fsm_manual_run();
+    SCH_Dispatch_Tasks();
   }
   /* USER CODE END 3 */
 }
@@ -218,7 +252,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 239;
+  htim3.Init.Prescaler = 119;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 100;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -338,27 +372,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-//////
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM1) {
-    HAL_IncTick();
-  }
-  if (htim->Instance == TIM2) {
-      timerRun(0); // led duration
-      timerRun(1); //  7-segment counter 1s
-      timerRun(3); // blinking led
-      getKeyInput(0);
-      getKeyInput(1);
-      getKeyInput(2);
-      getKeyInput(3);
-  }
-  /* USER CODE BEGIN Callback 1 */
-//////
-  /* USER CODE END Callback 1 */
-}
+
 /* USER CODE END 4 */
 
 /**
@@ -369,27 +383,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   * @param  htim : TIM handle
   * @retval None
   */
-//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-//{
-//  /* USER CODE BEGIN Callback 0 */
-////////
-//  /* USER CODE END Callback 0 */
-//  if (htim->Instance == TIM1) {
-//    HAL_IncTick();
-//  }
-//  if (htim->Instance == TIM2) {
-//      timerRun(0); // led duration
-//      timerRun(1); //  7-segment counter 1s
-//      timerRun(3); // blinking led
-//      getKeyInput(0);
-//      getKeyInput(1);
-//      getKeyInput(2);
-//      getKeyInput(3);
-//  }
-//  /* USER CODE BEGIN Callback 1 */
-////////
-//  /* USER CODE END Callback 1 */
-//}
 
 /**
   * @brief  This function is executed in case of error occurrence.

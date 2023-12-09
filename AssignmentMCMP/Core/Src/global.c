@@ -77,6 +77,10 @@ void setPedesLeds(int red, int green, int mixed){
         HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, SET);
         HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, SET);
     }
+    if(red == RESET && green == RESET && mixed == RESET) {
+        HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, RESET);
+        HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, RESET);
+    }
 //    HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, RESET);
 //    HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, RESET);	Toggle Led error
 }
