@@ -12,7 +12,10 @@
 #include <stdint.h>
 #include "software_timer.h"
 #include "button.h"
+#include "scheduler.h"
 #include "main.h"
+#include "fsm_automatic.h"
+#include "fsm_manual.h"
 
 #define INIT 1
 #define RED_GREEN 2
